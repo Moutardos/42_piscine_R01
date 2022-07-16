@@ -6,21 +6,6 @@
 /*   By: lcozdenm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:02:58 by lcozdenm          #+#    #+#             */
-/*   Updated: 2022/07/16 17:03:02 by lcozdenm         ###   ########.fr       */
+/*   Updated: 2022/07/16 17:50:04 by lcozdenm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-int	ft_isspace(char c)
-{
-	if (c == ' ')
-		return (1);
-	return (c == '\t' || c == '\f' || c == '\n' || c == '\v' || c == '\r');
-}
-
-int *ft_splitn(char * arg, int n)
-{
-	int *tab;
-
-	
-	while(arg)
-}
