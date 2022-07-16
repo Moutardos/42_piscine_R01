@@ -1,0 +1,10 @@
+==============RUSH-01==============
+
+Diviser le projet en plusieurs fichiers:
+- display.c (Affichage de la grille)
+  put_char, print_line, print_tab...
+- solver.c  (S'occupe de la logique du programme)
+  ....
+- main.c    (fonction principal)
+- input.c    (s'occupe de verifier l'input de l'utilisateur et remplir le tableau de jeu avec)
+
