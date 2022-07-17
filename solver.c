@@ -275,4 +275,4 @@ int  **crea_soluc(int size, int tab[size][size], int i, int j)
         
     }
   return (sol);
-}*/
+}*/ 
