@@ -6,7 +6,7 @@
 /*   By: lcozdenm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:07:33 by lcozdenm          #+#    #+#             */
-/*   Updated: 2022/07/16 18:11:44 by lcozdenm         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:40:21 by lcozdenm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
@@ -20,9 +20,8 @@ int	ft_isspace(char c)
 	return (c == '\t' || c == '\f' || c == '\n' || c == '\v' || c == '\r');
 }
 
-// traite que les cas avec n contenant un seul chiffre
-// renvoie l'input de l'user dans un tab[4][n]
-// renvoie null si il y a un probleme
+//	take a string and put every digit (between 2 and 9)
+//	in a double arrayf
 int	**ft_input_to_tab(char *arg, int n)
 {
 	int	**tab;
