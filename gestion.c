@@ -10,6 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
+
 void	free_tab(int **tab, int size)
 {
 	int	c;
@@ -21,4 +23,19 @@ void	free_tab(int **tab, int size)
 			free(tab[c]);
 	}
 	free(tab);
+}
+
+int	**crea_tab(int size)
+{
+	int	i;
+	int	**sol;
+
+	i = 0;
+	sol = (int **) malloc (size * sizeof (int *) + 1);
+	while (i < size)
+	{
+		sol[i] = (int *) malloc(size * sizeof(int) + 1);
+		i++;
+	}
+	return (sol);
 }
