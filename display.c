@@ -6,7 +6,7 @@
 /*   By: vhoffner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:00:42 by vhoffner          #+#    #+#             */
-/*   Updated: 2022/07/16 19:08:09 by vhoffner         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:42:07 by lcozdenm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,22 @@
 
 #include<stdlib.h>
 
-int	**ft_input_to_tab(char *arg, int m);
-
 void	ft_putchar(int i)
 {
-	char	c;
+	char c;
 
 	c = i + '0';
 	write(1, &c, 1);
 }
 
+void	ft_putstr(char *str)
+{
+	while (*str != '\0')
+	{
+		write(1, str, 1);
+		str++;
+	}
+}
 void	output_tab(int **tab, int size)
 {
 	int	i;
