@@ -111,35 +111,72 @@ int value_of_col(int size, int sens, int i, int** sol)
 //	since indication[0] -> colup     [2] -> rowleft
 //									[1] -> coldown   [3] -> rowright
 //	we use a formula to get the position through 'is_neg'
-int verification(int size, int **sol, int **indication)
+int verif_ligcol(int **sol, int i, int j)
 {
-	int count;
-	int neg_count;
-	int is_neg;
-	int ind_pos;
+	int	a;
+	int	b;
 
-	count = 0;
-	is_neg = 1;
-	neg_count = 0;
-	while (neg_count++ < 2)
+	a = 0;
+	b = 0;
+	while (a < i)
 	{
-		ind_pos = (1 - is_neg)/2;
-		while (count < size)
-		{
-			if (value_of_col(size, is_neg, count, sol) != 
-				indication[ind_pos][count])
-			{
-				return (0);
-			}
-			if (value_of_line(size, is_neg, sol[count]) !=
-				indication[(ind_pos - 1) * -(1/2) + 2][count])
-				return (0);
-			count++;
-		}
-		is_neg *= -1;
-		neg_count += 1;
+		if (sol[a][j] == sol[i][j])
+			return (0);
+		 a++;
+	}
+	while (b < j)
+	{
+		if (sol[i][b] == sol[i][j])
+			return (0);
+		b++;
 	}
 	return (1);
+}
+
+int  **crea_tab(int size)
+{
+	int	i;
+	int	**sol;
+
+	i = 0;
+	sol = (int **) malloc (size *  sizeof(int*) + 1);
+	while (i < size)
+	{
+		sol[i] = (int *) malloc(size * sizeof(int) + 1);
+		 i++;
+	}
+	return (sol);
+}
+
+void	crea_solut(int size, int **tab, int x, int y, int **ind)
+{
+	int	a;
+
+	a = 0;
+	if (x == size - 1 && y == size - 1)
+	{
+		output_tab(tab, 4);
+		return;
+	}
+	while (a < size)
+	{
+		tab[x][y] = a++;
+		if (verif_ligcol(tab, x, y))
+		{
+			if (y == size - 1)
+			{
+				if (!(value_of_line(size, 1, tab[x]) == ind[2][x] && value_of_line(size, -1, tab[x]) == ind[3][x]))
+					return;
+				y = -1;
+				x++;
+			}
+			else if (x == size - 1)
+				if (!(value_of_col(size, 1, y, tab) == ind[0][y] && value_of_col(size, -1, y, tab) == ind[1][y]))
+					return;
+			crea_solut(size, tab, x, y + 1, ind);
+		}
+	}
+	return;
 }
 /* size  :  tail0le tableau
 /  cote  :  0 : colup     2:rowleft
