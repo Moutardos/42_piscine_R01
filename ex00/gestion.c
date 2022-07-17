@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include <stddef.h>
-
+#include <stdlib.h>
 void	free_tab(int **tab, int size)
 {
 	int	c;

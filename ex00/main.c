@@ -14,7 +14,7 @@
 int	**ft_input_to_tab(char *arg, int n);
 void	output_tab(int **tab, int size);
 void	ft_putstr(char *str);
-void	crea_solut(int size, int **tab, int x, int y, int **ind);
+void	crea_solut(int size, int **tab, int *coord, int **ind);
 int	**crea_tab(int size);
 
 //	first arg: string that describe the puzzle (number delimated by spaces)
@@ -24,7 +24,10 @@ int	main(int ac, char **av)
 	int	**tab;
 	int	tab_size;
 	int **solution;
-
+	int coord[2];
+	
+	coord[0] = 0;
+	coord[1] = 0;
 	if (ac >= 2)
 	{
 		tab_size = 4;
@@ -38,6 +41,6 @@ int	main(int ac, char **av)
 		return (-1);
 	}
 	solution = crea_tab(tab_size);
-	crea_solut(tab_size, solution, 0, 0, tab);
+	crea_solut(tab_size, solution, coord,tab);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: vhoffner <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 19:00:42 by vhoffner          #+#    #+#             */
-/*   Updated: 2022/07/17 18:42:07 by lcozdenm         ###   ########.fr       */
+/*   Updated: 2022/07/17 18:59:57 by lcozdenm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,12 +36,12 @@ void	output_tab(int **tab, int size)
 	int	j;
 
 	i = 0;
-	while (i < size)
+	while (i < 4)
 	{
 		j = 0;
 		while (j < size)
 		{
-			ft_putchar(tab[i][j]);
+			ft_putchar(tab[i][j] + 1);
 			j++;
 			if (j != size)
 				write(1, " ", 1);
