@@ -123,18 +123,23 @@ int verification(int size, int **sol, int **indication)
 	neg_count = 0;
 	while (neg_count++ < 2)
 	{
-		ind_pos = (1 + is_neg)/2;
+		ind_pos = (1 - is_neg)/2;
 		while (count < size)
 		{
 			if (value_of_col(size, is_neg, count, sol) != 
 				indication[ind_pos][count])
+			{
 				return (0);
+			}
 			if (value_of_line(size, is_neg, sol[count]) !=
 				indication[(ind_pos - 1) * -(1/2) + 2][count])
 				return (0);
+			count++;
 		}
 		is_neg *= -1;
+		neg_count += 1;
 	}
+	return (1);
 }
 /* size  :  tail0le tableau
 /  cote  :  0 : colup     2:rowleft
