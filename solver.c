@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
-
+#include <stdio.h>
+/*
 int	verif_caisse(int size, int depl, int sens, int sol[size][size], int cote, int place)
 {
 	int	valeur;
@@ -35,7 +36,111 @@ int	verif_caisse(int size, int depl, int sens, int sol[size][size], int cote, in
 	}
 	return (1);
 }
+*/
 
+
+
+//	return the numbers of boxes from the given line,
+//  don't work if size <= 1
+//	size -> size of solution
+//	sens -> 1 left-right and -1 right-left
+//	sol -> a line from the solution
+int value_of_line(int size, int sens, int* line)
+{
+	int pos;
+	int lim;
+	int max;
+
+	if (sens < 0 )
+	{
+		pos = size - 1;
+		lim = -1;
+	}
+	else
+	{
+		pos = 0;
+		lim = size;
+	}
+	max = line[pos];
+	while (pos != lim)
+	{
+		if (line[pos] < max)
+			size--;
+		else
+			max = line[pos];
+		pos += sens;
+	}
+	return size;
+}
+
+//	return the number of box visible in the i-th column,
+//  don't work if size <= 1
+//	size -> size of solution
+//	sens -> 1 up-down and -1 down-up
+//	i -> the i-th column
+//	sol -> solution given
+int value_of_col(int size, int sens, int i, int** sol)
+{
+	int pos;
+	int lim;
+	int max;
+
+	if (sens < 0 )
+	{
+		pos = size - 1;
+		lim = -1;
+	}
+	else
+	{
+		pos = 0;
+		lim = size;
+	}
+	max = sol[pos][i];
+	while (pos != lim)
+	{
+		if (sol[pos][i] < max)
+			size--;
+		else
+			max = sol[pos][i];
+				pos += sens;
+	}
+	return size;
+}
+
+//	check if sol is a correct solution
+//	since indication[0] -> colup     [2] -> rowleft
+//									[1] -> coldown   [3] -> rowright
+//	we use a formula to get the position through 'is_neg'
+int verification(int size, int **sol, int **indication)
+{
+	int count;
+	int neg_count;
+	int is_neg;
+	int ind_pos;
+
+	count = 0;
+	is_neg = 1;
+	neg_count = 0;
+	while (neg_count++ < 2)
+	{
+		ind_pos = (1 + is_neg)/2;
+		while (count < size)
+		{
+			if (value_of_col(size, is_neg, count, sol) != 
+				indication[ind_pos][count])
+				return (0);
+			if (value_of_line(size, is_neg, sol[count]) !=
+				indication[(ind_pos - 1) * -(1/2) + 2][count])
+				return (0);
+		}
+		is_neg *= -1;
+	}
+}
+/* size  :  tail0le tableau
+/  cote  :  0 : colup     2:rowleft
+/			 	   	1 : coldown   3:rowright
+/  place : position de l'indication
+/	 sol   : la solution	
 int	verif_ligne(int size, int cote, int place, int sol[size][size])
 {
 	int	depl;
@@ -128,10 +233,4 @@ int  **crea_soluc(int size, int tab[size][size], int i, int j)
         
     }
   return (sol);
-}
-
-int main(void) 
-{
-  
-  return 0;
-}
+}*/

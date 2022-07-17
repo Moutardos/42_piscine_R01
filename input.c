@@ -6,7 +6,7 @@
 /*   By: lcozdenm <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/16 17:07:33 by lcozdenm          #+#    #+#             */
-/*   Updated: 2022/07/16 17:57:01 by lcozdenm         ###   ########.fr       */
+/*   Updated: 2022/07/16 18:11:44 by lcozdenm         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include <stddef.h>
@@ -21,7 +21,7 @@ int	ft_isspace(char c)
 }
 
 // traite que les cas avec n contenant un seul chiffre
-// renvoie l'input de l'user dans un tab[n][n]
+// renvoie l'input de l'user dans un tab[4][n]
 // renvoie null si il y a un probleme
 int	**ft_input_to_tab(char *arg, int n)
 {
@@ -30,11 +30,11 @@ int	**ft_input_to_tab(char *arg, int n)
 	int	j;
 
 	j = 0;
-	tab = (int **) malloc(n * sizeof(int *) + 1);
-	while (j < n)
+	tab = (int **) malloc(4 * sizeof(int *));
+	while (j < 4)
 	{
 		i = 0;
-		tab[j] = (int *) malloc(n * sizeof(int) + 1);
+		tab[j] = (int *) malloc(n * sizeof(int));
 		while (i < n)
 		{
 			while (ft_isspace(*arg))
